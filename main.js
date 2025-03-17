@@ -13,7 +13,6 @@ app.whenReady().then(() => {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: false,
             contextIsolation: true,
-            // sandbox: false
         }
     });
     mainWindow.loadFile(path.join(__dirname, '/html/index.html'));

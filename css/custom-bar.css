@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 30px;
+    height: 4%;
     background: #3d4248; /* 略淡于 sidebar 的 #343a40 */
     color: white;
     display: flex;
@@ -41,7 +41,7 @@
     width: 20%;
     height: 100vh;
     position: fixed;
-    top: 30px; /* 避免与标题栏重叠 */
+    top: 4%; /* 避免与标题栏重叠 */
     left: 0;
     background-color: #343a40;
     padding-top: 20px;
