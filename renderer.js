@@ -18,14 +18,19 @@ dropZone.addEventListener('drop', (event) => {
     event.preventDefault();
     dropZone.classList.remove('drag-over');
     const file = event.dataTransfer.files[0];
-    if (file) {
-        console.log("Dropped File:", file);
-        if (file.name.endsWith('.csv')) {
-            window.electronAPI.processCSV(file.path);
-        } else {
-            fileOutput.textContent = 'Only Support CSV!';
-        }
-    }
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file.name);
+    console.log("Dropped File:", file);
+    console.log("Content:", reader.result);
+
+    // if (file) {
+    //     console.log("Dropped File:", file);
+    //     if (file.name.endsWith('.csv')) {
+    //         window.electronAPI.processCSV(file.path);
+    //     } else {
+    //         fileOutput.textContent = 'Only Support CSV!';
+    //     }
+    // }
 });
 
 // 🔹 监听点击上传
