@@ -14,33 +14,22 @@ dropZone.addEventListener('dragleave', () => {
     dropZone.classList.remove('drag-over');
 });
 
-dropZone.addEventListener('drop', (event) => {
+dropZone.addEventListener('drop', async (event) => {
     event.preventDefault();
     dropZone.classList.remove('drag-over');
-
-    const file = event.dataTransfer.files[0];
-    console.log("Dropped file:", file);
-
-    if (file && file.path.endsWith('.csv')) {
-        window.electronAPI.sendToMain('read-csv', file.path);
-    } else {
-        document.getElementById('file-output').textContent = '请拖入 CSV 文件！';
-    }
 });
 
 // 🔹 监听点击上传
-uploadBtn.addEventListener('click', () => {
-    fileInput.click();
-});
-
-fileInput.addEventListener('change', () => {
-    if (fileInput.files.length > 0) {
-        console.log("Selected file:", fileInput.files[0]);
-        window.electronAPI.sendToMain('read-csv', fileInput.files[0].path);
+uploadBtn.addEventListener('click', async () => {
+    const fileName = await window.electronAPI.openFileDialog();
+    console.log("Choosing File:", fileName);
+    if (fileName) {
+        window.electronAPI.processCSV(fileName);
     }
 });
 
 // 🔹 监听 CSV 读取结果
-window.electronAPI.receiveFromMain('csv-data', (data) => {  // ✅ 修改这里
-    document.getElementById('file-output').textContent = data;
+window.electronAPI.receiveFromMain('csv-data', (data) => {
+    console.log("Success to read CSV");
+    // document.getElementById('file-output').textContent = data;
 });
