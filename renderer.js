@@ -19,6 +19,7 @@ dropZone.addEventListener('drop', (event) => {
     dropZone.classList.remove('drag-over');
 
     const file = event.dataTransfer.files[0];
+    console.log("Dropped file:", file);
 
     if (file && file.path.endsWith('.csv')) {
         window.electronAPI.sendToMain('read-csv', file.path);
@@ -34,6 +35,7 @@ uploadBtn.addEventListener('click', () => {
 
 fileInput.addEventListener('change', () => {
     if (fileInput.files.length > 0) {
+        console.log("Selected file:", fileInput.files[0]);
         window.electronAPI.sendToMain('read-csv', fileInput.files[0].path);
     }
 });
