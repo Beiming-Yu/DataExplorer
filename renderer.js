@@ -39,6 +39,6 @@ fileInput.addEventListener('change', () => {
 });
 
 // 🔹 监听 CSV 读取结果
-ipcRenderer.on('csv-data', (event, data) => {
+window.electronAPI.receiveFromMain('csv-data', (data) => {  // ✅ 修改这里
     document.getElementById('file-output').textContent = data;
 });
