@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>固定侧边栏</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #sidebar.hide {
+            transform: translateX(-250px);
+        }
+
+        /* 侧边栏内的文本样式 */
+        #sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        #sidebar a:hover {
+            background-color: #495057;
+        }
+
+        /* 主体内容区域 */
+        #main-content {
+            margin-left: 250px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        #main-content.shrink {
+            margin-left: 0;
+        }
+    </style>
 </head>
 <body>
 
 <!-- 侧边栏 -->
 <div id="sidebar">
-    <button class="btn btn-light w-100" onclick="toggleSidebar()">收回</button>
     <a href="#">首页</a>
     <a href="#">关于</a>
     <a href="#">联系</a>
@@ -18,7 +53,6 @@
 
 <!-- 主体内容 -->
 <div id="main-content" class="p-4">
-    <button class="btn btn-primary" onclick="toggleSidebar()">展开</button>
     <h1>欢迎来到我的页面</h1>
     <p>这里是主要内容区域。</p>
 </div>
