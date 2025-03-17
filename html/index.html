@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>固定侧边栏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- 侧边栏 -->
+<div id="sidebar">
+    <button class="btn btn-light w-100" onclick="toggleSidebar()">收回</button>
+    <a href="#">首页</a>
+    <a href="#">关于</a>
+    <a href="#">联系</a>
+</div>
+
+<!-- 主体内容 -->
+<div id="main-content" class="p-4">
+    <button class="btn btn-primary" onclick="toggleSidebar()">展开</button>
+    <h1>欢迎来到我的页面</h1>
+    <p>这里是主要内容区域。</p>
+</div>
+
+<script src="../renderer.js"></script>
+
+</body>
+</html>
