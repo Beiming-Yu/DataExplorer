@@ -1,5 +1,6 @@
 const { app, BrowserWindow, protocol, ipcMain } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 let mainWindow;
 
