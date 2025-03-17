@@ -1,6 +1,6 @@
 {
   "name": "DataExplorer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ML-based explorer for csv-like data",
   "main": "main.js",
   "scripts": {
