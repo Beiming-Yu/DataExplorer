@@ -16,6 +16,7 @@ app.whenReady().then(() => {
         }
     });
     mainWindow.loadFile(path.join(__dirname, '/html/index.html'));
+    mainWindow.webContents.openDevTools();
 });
 
 ipcMain.on('minimize-window', () => {
@@ -36,4 +37,15 @@ ipcMain.on('close-window', () => {
 
 ipcMain.handle('get-file-path', (event, relativePath) => {
   return `file://${path.join(__dirname, relativePath)}`;
+});
+
+ipcMain.on('read-csv', (event, filePath) => {
+    console.log("Reading CSV file:", filePath);
+    fs.readFile(filePath, 'utf-8', (err, data) => {
+        if (err) {
+            event.reply('csv-data', '读取文件失败');
+            return;
+        }
+        event.reply('csv-data', data);
+    });
 });
